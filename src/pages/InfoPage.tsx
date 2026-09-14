@@ -121,7 +121,7 @@ export default function InfoPage() {
               {info.slug === "contact" && (
                 <a
                   href={`mailto:${settings.contact_email}`}
-                  className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-7 text-sm font-semibold text-white transition-transform hover:scale-105"
+                  className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-7 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105"
                 >
                   <Mail className="h-4 w-4" /> Email us
                 </a>

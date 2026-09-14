@@ -89,7 +89,7 @@ function OrderCard({ order }: { order: Order }) {
                 <div className="flex flex-col items-center">
                   <span
                     className={`grid h-6 w-6 place-items-center rounded-full text-[10px] font-bold ${
-                      done ? "bg-primary text-white" : "bg-muted text-muted-foreground"
+                      done ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
                     }`}
                   >
                     {i + 1}
@@ -201,7 +201,7 @@ export default function Track() {
           </div>
           <button
             disabled={loading}
-            className="inline-flex h-12 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-white transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-50"
+            className="inline-flex h-12 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition-all hover:opacity-90 active:scale-[0.98] disabled:opacity-50"
           >
             <Search className="h-4 w-4" />
             {loading ? t("track.searching") : t("track.search")}

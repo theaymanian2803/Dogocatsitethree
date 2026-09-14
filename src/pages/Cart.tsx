@@ -104,7 +104,7 @@ export default function Cart() {
               </dl>
               <Link
                 to="/checkout"
-                className="mt-6 block rounded-full bg-primary py-3 text-center font-semibold text-white hover:opacity-90"
+                className="mt-6 block rounded-full bg-primary py-3 text-center font-semibold text-primary-foreground hover:opacity-90"
               >
                 {t("cart.checkout")}
               </Link>

@@ -149,7 +149,7 @@ export default function Account() {
                   </div>
                   <button
                     type="submit"
-                    className="w-full border border-accent bg-primary py-2 text-sm font-semibold text-white hover:opacity-90 transition-all active:scale-[0.98]"
+                    className="w-full border border-accent bg-primary py-2 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-all active:scale-[0.98]"
                   >
                     <Search className="h-4 w-4 inline mr-1.5 -mt-0.5" /> {t("account.findOrders")}
                   </button>

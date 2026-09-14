@@ -220,7 +220,7 @@ export default function Checkout() {
                   </div>
                   <Link
                     to="/login?redirect=/checkout"
-                    className="mt-6 flex w-full items-center justify-center gap-2 border border-accent bg-primary py-3 text-sm font-semibold text-white hover:opacity-90 transition-all active:scale-[0.98]"
+                    className="mt-6 flex w-full items-center justify-center gap-2 border border-accent bg-primary py-3 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-all active:scale-[0.98]"
                   >
                     {t("checkout.signIn")}
                   </Link>
@@ -338,14 +338,14 @@ export default function Checkout() {
                 <button
                   type="submit"
                   disabled={placing}
-                  className="mt-5 w-full border border-accent bg-primary py-2.5 text-sm font-semibold text-white hover:opacity-90 disabled:opacity-50 transition-all active:scale-[0.98]"
+                  className="mt-5 w-full border border-accent bg-primary py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 disabled:opacity-50 transition-all active:scale-[0.98]"
                 >
                   {placing ? t("checkout.placing") : t("checkout.place")}
                 </button>
                 <button
                   type="button"
                   onClick={orderViaWhatsApp}
-                  className="mt-2 flex w-full items-center justify-center gap-2 border border-emerald-600 bg-emerald-600 py-2.5 text-sm font-semibold text-white hover:opacity-90 transition-all active:scale-[0.98]"
+                  className="mt-2 flex w-full items-center justify-center gap-2 border border-accent bg-accent py-2.5 text-sm font-semibold text-accent-foreground hover:opacity-90 transition-all active:scale-[0.98]"
                 >
                   <MessageCircle className="h-4 w-4" /> {t("checkout.whatsapp")}
                 </button>
