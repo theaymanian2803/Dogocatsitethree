@@ -147,7 +147,7 @@ export default function Track() {
   const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
-    document.title = "Track your order — PetPals";
+    document.title = "Track your order — Hearth & Hound";
   }, []);
 
   async function search(e?: React.FormEvent) {

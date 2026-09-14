@@ -90,7 +90,7 @@ export default function ProductPage() {
         const data = rs.rows[0] as unknown as Product | undefined;
         setProduct(data ?? null);
         if (data) {
-          document.title = `${data.name} — PetPals`;
+          document.title = `${data.name} — Hearth & Hound`;
           const [relRs, revRs] = await Promise.all([
             turso.execute({
               sql: "SELECT * FROM products WHERE category = ? AND id != ? LIMIT 4",

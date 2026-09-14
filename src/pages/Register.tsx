@@ -19,7 +19,7 @@ export default function Register() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    document.title = "Create account — PetPals";
+    document.title = "Create account — Hearth & Hound";
   }, []);
 
   useEffect(() => {

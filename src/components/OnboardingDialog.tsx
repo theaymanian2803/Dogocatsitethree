@@ -31,7 +31,7 @@ const DEMO_PASSWORD = "admin123";
 const STEPS: Step[] = [
   {
     icon: <PawPrint className="h-5 w-5" />,
-    title: "Welcome to PetPals",
+    title: "Welcome to Hearth & Hound",
     description:
       "This tour gets your store ready to sell: sign in to the admin, connect your own database, and secure your admin login. It takes about a minute.",
   },

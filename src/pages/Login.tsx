@@ -18,7 +18,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    document.title = "Sign in — PetPals";
+    document.title = "Sign in — Hearth & Hound";
   }, []);
 
   useEffect(() => {

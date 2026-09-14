@@ -12,7 +12,7 @@ export default function Auth() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    document.title = "Sign in — PetPals";
+    document.title = "Sign in — Hearth & Hound";
   }, []);
 
   async function submit(e: React.FormEvent) {

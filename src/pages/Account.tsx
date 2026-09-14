@@ -39,7 +39,7 @@ export default function Account() {
   const [phoneInput, setPhoneInput] = useState("");
 
   useEffect(() => {
-    document.title = "My Account — PetPals";
+    document.title = "My Account — Hearth & Hound";
   }, []);
 
   useEffect(() => {

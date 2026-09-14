@@ -11,7 +11,7 @@ export default function OrderConfirmed() {
   const phone = searchParams.get("phone") ?? "";
 
   useEffect(() => {
-    document.title = "Order confirmed — PetPals";
+    document.title = "Order confirmed — Hearth & Hound";
   }, []);
 
   return (

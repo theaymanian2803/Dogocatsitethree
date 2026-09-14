@@ -15,7 +15,7 @@ import { useEffect } from "react";
 export default function Index() {
   const { rows } = useSections();
   useEffect(() => {
-    document.title = "PetPals — Premium Food & Supplies for Dogs and Cats";
+    document.title = "Hearth & Hound — Premium Food & Supplies for Dogs and Cats";
   }, []);
   return (
     <div className="min-h-screen bg-background">

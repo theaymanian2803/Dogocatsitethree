@@ -40,7 +40,7 @@ export default function Checkout() {
   const total = subtotal + shipping;
 
   useEffect(() => {
-    document.title = "Checkout — PetPals";
+    document.title = "Checkout — Hearth & Hound";
   }, []);
 
   useEffect(() => {
@@ -160,7 +160,7 @@ export default function Checkout() {
     e.preventDefault();
     if (items.length === 0) return;
     const lines = [
-      "🐾 *New Order Request — PetPals*",
+      "🐾 *New Order Request — Hearth & Hound*",
       "",
       `👤 *Name:* ${form.first_name.trim()} ${form.last_name.trim()}`,
       `📞 *Phone:* ${form.phone.trim()}`,

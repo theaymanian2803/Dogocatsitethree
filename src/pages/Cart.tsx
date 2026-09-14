@@ -20,7 +20,7 @@ export default function Cart() {
   const total = subtotal + shipping;
 
   useEffect(() => {
-    document.title = "Your Cart — PetPals";
+    document.title = "Your Cart — Hearth & Hound";
   }, []);
 
   return (

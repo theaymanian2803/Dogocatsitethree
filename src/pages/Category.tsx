@@ -24,7 +24,7 @@ export default function Category() {
 
   useEffect(() => {
     const title = category ? category[0].toUpperCase() + category.slice(1) : "Category";
-    document.title = `${title} — PetPals`;
+    document.title = `${title} — Hearth & Hound`;
   }, [category]);
 
   useEffect(() => {

@@ -39,7 +39,7 @@ export default function Shop() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
 
   useEffect(() => {
-    document.title = "Shop — PetPals";
+    document.title = "Shop — Hearth & Hound";
   }, []);
 
   useEffect(() => {

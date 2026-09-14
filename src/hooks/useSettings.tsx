@@ -3,10 +3,10 @@ import type { ReactNode } from "react";
 import { turso } from "@/integrations/turso/client";
 
 export const defaultSettings = {
-  brand_name: "PetPals",
+  brand_name: "Hearth & Hound",
   brand_logo: "",
   tagline: "Everything your furry friend needs, delivered with love to your door.",
-  contact_email: "hello@petpals.com",
+  contact_email: "hello@hearthandhound.com",
   contact_phone: "+1 (555) 012-3456",
   whatsapp_number: "",
   contact_address: "124 Whisker Lane, Portland, OR 97205",

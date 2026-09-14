@@ -42,7 +42,7 @@ export const infoPages: InfoPage[] = [
   {
     slug: "about",
     eyebrow: "Our story",
-    title: "About PetPals",
+    title: "About Hearth & Hound",
     subtitle:
       "We're a team of pet lovers on a mission to make life better for animals — and the people who love them.",
     icon: Heart,
@@ -51,7 +51,7 @@ export const infoPages: InfoPage[] = [
         heading: "Our story",
         icon: PawPrint,
         body: [
-          "PetPals started in 2020 with a simple idea: pet parents deserve better. Better food, better toys, better beds, and better guidance — all in one place, delivered with care.",
+          "Hearth & Hound started in 2020 with a simple idea: pet parents deserve better. Better food, better toys, better beds, and better guidance — all in one place, delivered with care.",
           "What began as a small neighborhood shop has grown into a trusted online destination for dogs, cats, and the whole family of furry friends. Through every stage, our values haven't changed: quality over quantity, and pets before profit.",
         ],
       },
@@ -219,13 +219,13 @@ export const infoPages: InfoPage[] = [
   {
     slug: "careers",
     eyebrow: "Join the pack",
-    title: "Careers at PetPals",
+    title: "Careers at Hearth & Hound",
     subtitle:
       "Love pets? So do we. Come do the best work of your career with a team that brings dogs (and cats) to the office.",
     icon: Briefcase,
     sections: [
       {
-        heading: "Why PetPals",
+        heading: "Why Hearth & Hound",
         icon: Heart,
         body: [
           "We're a small, friendly team growing fast. You'll have real ownership from day one, work with kind people, and get plenty of pet breaks.",
@@ -257,17 +257,17 @@ export const infoPages: InfoPage[] = [
     eyebrow: "News & media",
     title: "Press & media",
     subtitle:
-      "The latest news, assets, and story of PetPals — for journalists and friends of the brand.",
+      "The latest news, assets, and story of Hearth & Hound — for journalists and friends of the brand.",
     icon: Megaphone,
     sections: [
       {
         heading: "In the news",
         icon: Megaphone,
         body: [
-          "PetPals has been featured in publications celebrating thoughtful, sustainable pet care. Recent highlights:",
+          "Hearth & Hound has been featured in publications celebrating thoughtful, sustainable pet care. Recent highlights:",
         ],
         list: [
-          "“PetPals tops the list of pet brands doing good.” — Pet Daily, 2026.",
+          "“Hearth & Hound tops the list of pet brands doing good.” — Pet Daily, 2026.",
           "“A modern pet shop with a heart.” — Northwest Living, 2025.",
           "“Why sustainable pet care is booming.” — Green Retail Report, 2025.",
         ],

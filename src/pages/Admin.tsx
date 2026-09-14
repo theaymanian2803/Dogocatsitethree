@@ -115,7 +115,7 @@ const emptyForm = {
 
 const emptyReviewForm = {
   product_id: "",
-  user_name: "PetPals Team",
+  user_name: "Hearth & Hound Team",
   rating: 5,
   title: "",
   body: "",
@@ -295,7 +295,7 @@ export default function Admin() {
   }, [settings]);
 
   useEffect(() => {
-    document.title = "Admin — PetPals";
+    document.title = "Admin — Hearth & Hound";
   }, []);
 
   const pageTitle =
@@ -441,7 +441,7 @@ export default function Admin() {
             Sign in required
           </h1>
           <p className="mt-1.5 text-sm text-muted-foreground">
-            You need to sign in as an admin to manage PetPals.
+            You need to sign in as an admin to manage Hearth & Hound.
           </p>
           <Link
             to={`/auth?next=${encodeURIComponent(window.location.pathname + window.location.search)}`}
@@ -942,7 +942,7 @@ export default function Admin() {
             <div className="grid h-9 w-9 place-items-center rounded-xl bg-primary-foreground/10">
               <PawPrint className="h-5 w-5" />
             </div>
-            <span className="font-display text-lg font-bold tracking-tight">PetPals</span>
+            <span className="font-display text-lg font-bold tracking-tight">Hearth & Hound</span>
             <span className="ml-auto rounded-full bg-primary-foreground/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary-foreground/80">
               Admin
             </span>
@@ -2271,7 +2271,7 @@ export default function Admin() {
                     <label className="text-xs font-medium text-foreground">Reviewer name</label>
                     <input
                       required
-                      placeholder="e.g. PetPals Team"
+                      placeholder="e.g. Hearth & Hound Team"
                       value={reviewForm.user_name}
                       onChange={(e) => setReviewForm({ ...reviewForm, user_name: e.target.value })}
                       className={inputClass}

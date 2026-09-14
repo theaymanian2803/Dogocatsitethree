@@ -8,11 +8,11 @@ web
 
 ## Users
 
-PetPals store owner/operator. They manage the pet e-commerce catalog and incoming orders, typically in short daily sessions on desktop, with mobile/tablet used for quickly checking new orders.
+Hearth & Hound store owner/operator. They manage the pet e-commerce catalog and incoming orders, typically in short daily sessions on desktop, with mobile/tablet used for quickly checking new orders.
 
 ## Product Purpose
 
-PetPals is a dog & cat pet supplies e-commerce store. The admin dashboard lets the owner manage products, categories, and customer orders (view, change status, delete).
+Hearth & Hound is a dog & cat pet supplies e-commerce store. The admin dashboard lets the owner manage products, categories, and customer orders (view, change status, delete).
 
 ## Positioning
 
@@ -35,7 +35,7 @@ Admin is password-protected (admin email/password stored in the `admins` table).
 
 ## Brand Commitments
 
-- Name: PetPals.
+- Name: Hearth & Hound.
 - The storefront has an established light visual identity with an accent color (CSS tokens: `accent`, `background`, `foreground`, `secondary`, `muted`, `card`, `border`), rounded-full pill buttons, and Inter-family feel. The admin must match the storefront identity rather than appearing as a separate gray app.
 
 ## Evidence on Hand
@@ -46,7 +46,7 @@ Admin is password-protected (admin email/password stored in the `admins` table).
 ## Product Principles
 
 - Fast daily operations: status updates and product edits should be one or two taps, never buried.
-- Brand continuity: the admin is still PetPals, not a foreign gray app.
+- Brand continuity: the admin is still Hearth & Hound, not a foreign gray app.
 - Clarity over decoration: dense data (orders/products) must stay scannable with comfortable spacing.
 - All devices: the owner can check orders on a phone and fully manage on desktop; behavior must be identical everywhere.
 
