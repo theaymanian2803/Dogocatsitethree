@@ -331,7 +331,7 @@ export default function ProductPage() {
                   );
                   toast.success(`${product.name} added to cart`);
                 }}
-                className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-primary py-3 font-semibold text-accent-foreground transition-all hover:opacity-90 active:scale-[0.98]"
+                className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-primary py-3 font-semibold text-primary-foreground transition-all hover:opacity-90 active:scale-[0.98]"
               >
                 <ShoppingBag className="h-4 w-4" /> {t("products.add")}
               </button>

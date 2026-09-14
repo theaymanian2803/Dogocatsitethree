@@ -26,7 +26,7 @@ export function FloatingContact() {
         <a
           href={`tel:${tel}`}
           aria-label="Call the store"
-          className="grid h-12 w-12 place-items-center rounded-full bg-primary text-white shadow-lg shadow-accent/30 transition-transform hover:scale-105"
+          className="grid h-12 w-12 place-items-center rounded-full bg-primary text-primary-foreground shadow-lg shadow-accent/30 transition-transform hover:scale-105"
         >
           <Phone className="h-6 w-6" />
         </a>
