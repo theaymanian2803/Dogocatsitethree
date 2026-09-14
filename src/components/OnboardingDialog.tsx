@@ -337,14 +337,18 @@ export function OnboardingDialog({ open, onOpenChange }: OnboardingDialogProps) 
               Back
             </Button>
             {isLast ? (
-              <Button size="sm" onClick={handleClose} className="text-sm font-semibold">
+              <Button
+                size="sm"
+                onClick={handleClose}
+                className="bg-accent text-accent-foreground text-sm font-semibold hover:bg-accent/90"
+              >
                 Finish
               </Button>
             ) : (
               <Button
                 size="sm"
                 onClick={() => setStep((s) => Math.min(STEPS.length - 1, s + 1))}
-                className="text-sm font-semibold"
+                className="bg-accent text-accent-foreground text-sm font-semibold hover:bg-accent/90"
               >
                 Next
               </Button>

@@ -93,7 +93,7 @@ export const TursoSettingsDialog = ({ open, onOpenChange }: TursoSettingsDialogP
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-lg sm:rounded-2xl">
+      <DialogContent className="sm:max-w-lg sm:rounded-2xl bg-card">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 pr-8">
             <Database className="h-4 w-4 text-accent" />
@@ -123,6 +123,7 @@ export const TursoSettingsDialog = ({ open, onOpenChange }: TursoSettingsDialogP
               onChange={(e) => setUrl(e.target.value)}
               placeholder="libsql://your-database.turso.io"
               autoComplete="off"
+              className="bg-secondary border-border"
             />
           </div>
 
@@ -137,6 +138,7 @@ export const TursoSettingsDialog = ({ open, onOpenChange }: TursoSettingsDialogP
               placeholder="eyJhbGciOiJIUzI1NiIs…"
               type="password"
               autoComplete="off"
+              className="bg-secondary border-border"
             />
           </div>
 
