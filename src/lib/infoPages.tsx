@@ -92,7 +92,7 @@ export const infoPages: InfoPage[] = [
           "The fastest way to reach us is by email or chat. For order issues, please include your order number so we can help you faster.",
         ],
         items: [
-          { label: "Email", value: "hello@petpals.com", icon: Mail },
+          { label: "Email", value: "hello@hearthandhound.com", icon: Mail },
           { label: "Phone", value: "+1 (555) 012-3456", icon: Phone },
           { label: "Visit us", value: "124 Whisker Lane, Portland, OR 97205", icon: MapPin },
           { label: "Support hours", value: "Mon–Sat, 9am–6pm", icon: Clock },
@@ -241,7 +241,7 @@ export const infoPages: InfoPage[] = [
         heading: "Current openings",
         icon: Briefcase,
         body: [
-          "We're always looking for passionate people. Email your resume to careers@petpals.com.",
+          "We're always looking for passionate people. Email your resume to careers@hearthandhound.com.",
         ],
         list: [
           "Customer Happiness Specialist — Remote.",
@@ -276,7 +276,7 @@ export const infoPages: InfoPage[] = [
         heading: "Brand assets",
         icon: Building2,
         body: [
-          "For logos, product images, and our media kit, email press@petpals.com and a real human will send everything you need.",
+          "For logos, product images, and our media kit, email press@hearthandhound.com and a real human will send everything you need.",
         ],
       },
     ],
