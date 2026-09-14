@@ -34,7 +34,11 @@ export function Hero() {
             {settings.hero_subtitle}
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <Link to="/shop" data-tour="home-shop" className="btn-accent gap-2">
+            <Link
+              to="/shop"
+              data-tour="home-shop"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-7 py-3 text-sm font-semibold text-accent-foreground transition-all hover:-translate-y-0.5 hover:bg-accent/90"
+            >
               {t("hero.shop")} <ArrowRight className="h-4 w-4" />
             </Link>
             <Link

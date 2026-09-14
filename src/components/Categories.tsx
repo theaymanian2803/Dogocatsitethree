@@ -37,7 +37,7 @@ export function Categories() {
         <div className="squiggle mx-auto mt-5" />
       </div>
 
-      {/* Masonry: equal-width green tiles, staggered heights and offsets, uniform product scale */}
+      {/* Masonry: equal-width terracotta/espresso tiles, staggered heights and offsets, uniform product scale */}
       <div className="grid grid-cols-2 items-start gap-5 mt-14 sm:grid-cols-3 lg:grid-cols-5">
         {items.map((it) => (
           <Link
@@ -62,7 +62,7 @@ export function Categories() {
               />
             </div>
 
-            {/* Shop pill - inverted on green, revealed on hover (desktop), always visible on touch */}
+            {/* Shop pill - inverted on color, revealed on hover (desktop), always visible on touch */}
             <div className="flex justify-center opacity-100 transition-all duration-300 lg:-translate-y-1.5 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100">
               <span className="inline-flex items-center gap-2 rounded-full bg-primary-foreground px-5 py-2.5 text-[11px] font-bold uppercase tracking-wider text-primary shadow-sm transition-all hover:opacity-90 active:scale-95">
                 {t("hero.shop")} <ArrowRight className="h-3.5 w-3.5" />
