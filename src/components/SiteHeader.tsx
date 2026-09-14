@@ -283,7 +283,7 @@ export function SiteHeader() {
                         placeholder={t("nav.search")}
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
-                        className="h-10 w-full rounded-full border border-border bg-secondary/60 pl-4 pr-10 text-sm outline-none focus:border-accent"
+                        className="h-10 w-full rounded-full border border-border bg-secondary/60 pl-4 pr-10 text-sm outline-none transition-all focus:border-accent focus:ring-2 focus:ring-accent/25"
                       />
                       <button
                         type="submit"
@@ -315,7 +315,7 @@ export function SiteHeader() {
                 className="h-8 w-8 rounded-xl object-contain sm:h-9 sm:w-9"
               />
             ) : (
-              <span className="grid h-8 w-8 place-items-center rounded-xl bg-primary text-primary-foreground sm:h-9 sm:w-9">
+              <span className="grid h-8 w-8 place-items-center rounded-xl bg-accent text-accent-foreground sm:h-9 sm:w-9">
                 <PawPrint className="h-5 w-5 sm:h-6 sm:w-6" />
               </span>
             )}
@@ -333,7 +333,7 @@ export function SiteHeader() {
                 end={n.to === "/"}
                 data-tour={n.key === "nav.shop" ? "nav-shop" : undefined}
                 className={({ isActive }) =>
-                  `relative rounded-xl px-3 py-2 transition-colors hover:text-accent ${isActive ? "text-accent after:absolute after:inset-x-3 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-primary" : "text-foreground"}`
+                  `relative rounded-xl px-3 py-2 transition-colors hover:text-accent ${isActive ? "text-accent after:absolute after:inset-x-3 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-accent" : "text-foreground"}`
                 }
               >
                 {t(n.key)}
@@ -381,7 +381,7 @@ export function SiteHeader() {
                         onClick={() => setMegaOpen(false)}
                         className="group flex items-center gap-3 rounded-xl border border-border/60 bg-background p-4 transition-all hover:border-accent/30 hover:bg-accent/5 hover:shadow-sm"
                       >
-                        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-accent/10 text-accent transition-colors group-hover:bg-primary group-hover:text-white">
+                        <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-accent/10 text-accent transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
                           <Icon className="h-5 w-5" />
                         </div>
                         <div className="min-w-0">

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Music2 } from "lucide-react";
+import { Facebook, Instagram, Music2, PawPrint } from "lucide-react";
 import { useSettings } from "@/hooks/useSettings";
 import { useI18n } from "@/lib/i18n";
 
@@ -48,8 +48,8 @@ export function SiteFooter() {
                 className="h-11 w-11 rounded-2xl bg-primary-foreground/10 object-contain p-1"
               />
             ) : (
-              <span className="grid h-11 w-11 place-items-center rounded-2xl bg-primary-foreground/10 text-2xl">
-                🐾
+              <span className="grid h-11 w-11 place-items-center rounded-2xl bg-primary-foreground/10">
+                <PawPrint className="h-6 w-6 text-accent" />
               </span>
             )}
             <span className="font-display text-2xl font-bold">{settings.brand_name}</span>
