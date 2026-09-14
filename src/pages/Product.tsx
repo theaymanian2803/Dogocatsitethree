@@ -450,7 +450,7 @@ export default function ProductPage() {
                 onClick={() =>
                   document.getElementById("review-form")?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="inline-flex h-11 shrink-0 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-white transition-transform hover:scale-105"
+                className="inline-flex h-11 shrink-0 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105"
               >
                 <Send className="h-4 w-4" /> Write a review
               </button>
@@ -539,10 +539,10 @@ export default function ProductPage() {
                   </div>
                   <button
                     disabled={submitting}
-                    className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-primary px-8 text-sm font-semibold text-white transition-all hover:opacity-90 disabled:pointer-events-none disabled:opacity-50"
+                    className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-primary px-8 text-sm font-semibold text-primary-foreground transition-all hover:opacity-90 disabled:pointer-events-none disabled:opacity-50"
                   >
                     {submitting ? (
-                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
+                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-primary-foreground/30 border-t-primary-foreground" />
                     ) : (
                       <>
                         <Send className="h-4 w-4" /> Submit review
@@ -559,7 +559,7 @@ export default function ProductPage() {
               </p>
               <Link
                 to={`/login?redirect=/product/${product.slug}`}
-                className="inline-flex h-10 items-center rounded-full bg-primary px-6 text-sm font-semibold text-white transition-transform hover:scale-105"
+                className="inline-flex h-10 items-center rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground transition-transform hover:scale-105"
               >
                 Sign in to review
               </Link>

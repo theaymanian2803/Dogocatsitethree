@@ -20,7 +20,7 @@ export function ProductCard({ product }: { product: ProductCardProduct }) {
   const { t } = useI18n();
 
   return (
-    <div className="group relative flex flex-col justify-between rounded-[2.5rem] bg-card p-4 shadow-sm card-lift">
+    <div className="group relative flex flex-col justify-between rounded-[2.5rem] bg-card p-4 border border-border/60 shadow-sm shadow-foreground/5 card-lift">
       <Link to={`/product/${product.slug}`} className="block">
         {/* Image Container with Badge Overlay */}
         <div className="relative aspect-square w-full overflow-hidden rounded-[1.75rem] bg-secondary/70 p-4">

@@ -156,7 +156,7 @@ export default function Shop() {
             <SlidersHorizontal className="h-4 w-4" />
             {t("shop.filters")}
             {activeFilterCount > 0 && (
-              <span className="grid h-5 w-5 place-items-center rounded-full bg-primary text-[10px] text-white">
+              <span className="grid h-5 w-5 place-items-center rounded-full bg-primary text-[10px] text-primary-foreground">
                 {activeFilterCount}
               </span>
             )}
@@ -254,7 +254,7 @@ export default function Shop() {
                 </p>
                 <button
                   onClick={clearFilters}
-                  className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2 text-sm font-semibold text-white hover:opacity-90"
+                  className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-2 text-sm font-semibold text-primary-foreground hover:opacity-90"
                 >
                   {t("shop.clearFilters")}
                 </button>
@@ -285,7 +285,7 @@ export default function Shop() {
                         onClick={() => setCurrentPage(i + 1)}
                         className={`grid h-10 w-10 place-items-center rounded-full text-sm font-medium ${
                           page === i + 1
-                            ? "bg-primary text-white"
+                            ? "bg-primary text-primary-foreground"
                             : "border border-border bg-card hover:bg-secondary"
                         }`}
                         aria-label={`Page ${i + 1}`}
