@@ -6,27 +6,47 @@ import { ProductCard, type ProductCardProduct } from "@/components/ProductCard";
 export function SectionProducts({ section }: { section: Section }) {
   const [products, setProducts] = useState<ProductCardProduct[]>([]);
   const ids = section.product_ids;
+  const cats = section.categories;
 
   useEffect(() => {
-    if (ids.length === 0) {
+    let cancelled = false;
+    if (cats.length > 0) {
+      const placeholders = cats.map(() => "?").join(",");
+      turso
+        .execute({
+          sql: `SELECT id, name, slug, price, image_url, badge, tag FROM products WHERE category IN (${placeholders}) ORDER BY created_at DESC LIMIT 12`,
+          args: cats,
+        })
+        .then(({ rows }) => {
+          if (!cancelled) setProducts(rows as unknown as ProductCardProduct[]);
+        })
+        .catch(() => {
+          if (!cancelled) setProducts([]);
+        });
+    } else if (ids.length > 0) {
+      const placeholders = ids.map(() => "?").join(",");
+      turso
+        .execute({
+          sql: `SELECT id, name, slug, price, image_url, badge, tag FROM products WHERE id IN (${placeholders})`,
+          args: ids,
+        })
+        .then(({ rows }) => {
+          if (cancelled) return;
+          const byId = new Map((rows as unknown as ProductCardProduct[]).map((p) => [p.id, p]));
+          setProducts(ids.map((id) => byId.get(id)).filter((p): p is ProductCardProduct => !!p));
+        })
+        .catch(() => {
+          if (!cancelled) setProducts([]);
+        });
+    } else {
       setProducts([]);
-      return;
     }
-    const placeholders = ids.map(() => "?").join(",");
-    turso
-      .execute({
-        sql: `SELECT id, name, slug, price, image_url, badge, tag FROM products WHERE id IN (${placeholders})`,
-        args: ids,
-      })
-      .then(({ rows }) => {
-        const byId = new Map((rows as unknown as ProductCardProduct[]).map((p) => [p.id, p]));
-        setProducts(ids.map((id) => byId.get(id)).filter((p): p is ProductCardProduct => !!p));
-      })
-      .catch(() => setProducts([]));
-  }, [ids]);
+    return () => {
+      cancelled = true;
+    };
+  }, [ids, cats]);
 
   if (products.length === 0) return null;
-  const cols = section.columns === 2 ? "grid-cols-2" : "grid-cols-2 md:grid-cols-3";
   const heading = section.title || section.name;
 
   return (
@@ -41,9 +61,14 @@ export function SectionProducts({ section }: { section: Section }) {
           {section.subtitle}
         </p>
       )}
-      <div className={`mt-12 grid gap-6 ${cols}`}>
+      <div className="mt-12 flex flex-wrap justify-center gap-5 lg:gap-6">
         {products.map((p) => (
-          <ProductCard key={p.id} product={p} />
+          <div
+            key={p.id}
+            className="w-[calc(50%-10px)] sm:w-[calc(33.333%-16px)] lg:w-[calc(25%-18px)]"
+          >
+            <ProductCard product={p} />
+          </div>
         ))}
       </div>
     </section>

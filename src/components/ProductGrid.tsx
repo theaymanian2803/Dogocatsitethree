@@ -23,9 +23,14 @@ export function ProductGrid() {
           {t("products.subtitle")}
         </p>
       </div>
-      <div className="mt-12 grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-4">
+      <div className="mt-12 flex flex-wrap justify-center gap-5 lg:gap-6">
         {products.map((p) => (
-          <ProductCard key={p.id} product={p} />
+          <div
+            key={p.id}
+            className="w-[calc(50%-10px)] sm:w-[calc(33.333%-16px)] lg:w-[calc(25%-18px)]"
+          >
+            <ProductCard product={p} />
+          </div>
         ))}
       </div>
     </section>
