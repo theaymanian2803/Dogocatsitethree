@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -30,6 +30,7 @@ export default function Checkout() {
   const [form, setForm] = useState({
     first_name: "",
     last_name: "",
+    email: "",
     phone: "",
     address: "",
   });
@@ -40,7 +41,7 @@ export default function Checkout() {
   const total = subtotal + shipping;
 
   useEffect(() => {
-    document.title = "Checkout — Hearth & Hound";
+    document.title = "Checkout â€” PetPals";
   }, []);
 
   useEffect(() => {
@@ -50,6 +51,7 @@ export default function Checkout() {
       ...f,
       first_name: f.first_name || (parts[0] ?? ""),
       last_name: f.last_name || parts.slice(1).join(" "),
+      email: f.email || user.email,
     }));
   }, [user]);
 
@@ -76,7 +78,7 @@ export default function Checkout() {
             </div>
             <div className="flex-1 min-w-0 text-sm">
               <p className="font-medium text-foreground truncate">{i.name}</p>
-              <p className="text-muted-foreground">× {i.qty}</p>
+              <p className="text-muted-foreground">Ã— {i.qty}</p>
             </div>
             <span className="text-sm font-medium text-foreground shrink-0">
               {formatPrice(i.qty * Number(i.price))}
@@ -121,10 +123,11 @@ export default function Checkout() {
     if (items.length === 0) return;
     setPlacing(true);
     try {
+      const orderId = crypto.randomUUID();
       await turso.execute({
         sql: "INSERT INTO orders (id, first_name, last_name, phone, address, items, total) VALUES (?, ?, ?, ?, ?, ?, ?)",
         args: [
-          crypto.randomUUID(),
+          orderId,
           form.first_name.trim(),
           form.last_name.trim(),
           form.phone.trim(),
@@ -141,6 +144,33 @@ export default function Checkout() {
           total,
         ],
       });
+
+      await fetch("/api/send-order-email", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          orderId,
+          customer: {
+            name: `${form.first_name.trim()} ${form.last_name.trim()}`.trim(),
+            email: form.email.trim(),
+            phone: form.phone.trim(),
+            address: form.address.trim(),
+          },
+          items: items.map((i) => ({
+            name: i.name,
+            qty: i.qty,
+            price: Number(i.price),
+            image_url: i.image_url,
+          })),
+          subtotal,
+          shipping,
+          total,
+          currency: "MAD",
+        }),
+      }).catch(() => {
+        // The order is already saved; email must never block checkout.
+      });
+
       clear();
       try {
         localStorage.setItem("petpals_last_phone", form.phone.trim());
@@ -160,14 +190,14 @@ export default function Checkout() {
     e.preventDefault();
     if (items.length === 0) return;
     const lines = [
-      "🐾 *New Order Request — Hearth & Hound*",
+      "ðŸ¾ *New Order Request â€” PetPals*",
       "",
-      `👤 *Name:* ${form.first_name.trim()} ${form.last_name.trim()}`,
-      `📞 *Phone:* ${form.phone.trim()}`,
-      `📍 *Address:* ${form.address.trim()}`,
+      `ðŸ‘¤ *Name:* ${form.first_name.trim()} ${form.last_name.trim()}`,
+      `ðŸ“ž *Phone:* ${form.phone.trim()}`,
+      `ðŸ“ *Address:* ${form.address.trim()}`,
       "",
       "*Items:*",
-      ...items.map((i) => `• ${i.name} ×${i.qty} — ${formatPrice(i.qty * Number(i.price))}`),
+      ...items.map((i) => `â€¢ ${i.name} Ã—${i.qty} â€” ${formatPrice(i.qty * Number(i.price))}`),
       "",
       `*Shipping:* ${shipping === 0 ? "Free" : formatPrice(shipping)}`,
       `*Total:* ${formatPrice(total)}`,
@@ -187,22 +217,22 @@ export default function Checkout() {
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <main className="mx-auto max-w-7xl px-6 py-12">
-        <h1 className="font-display text-3xl font-bold tracking-tight">{t("checkout.title")}</h1>
+        <h1 className="text-3xl font-bold tracking-tight">{t("checkout.title")}</h1>
 
         {items.length === 0 ? (
           <div className="mt-16 text-center">
             <Package className="mx-auto h-10 w-10 text-muted-foreground/40" />
             <p className="mt-3 text-sm text-muted-foreground">{t("checkout.empty")}</p>
             <Link to="/" className="mt-4 inline-block text-sm text-accent hover:underline">
-              ← {t("checkout.back")}
+              â† {t("checkout.back")}
             </Link>
           </div>
         ) : loading ? (
-          <p className="py-20 text-center text-muted-foreground">Loading…</p>
+          <p className="py-20 text-center text-muted-foreground">Loadingâ€¦</p>
         ) : !user && !guestCheckout ? (
           <div className="mt-10 grid gap-10 lg:grid-cols-3">
             <div className="lg:col-span-2">
-              <div className="overflow-hidden rounded-2xl bg-card shadow-sm">
+              <div className="border border-border">
                 <div className="px-6 py-4 border-b border-border">
                   <h2 className="text-base font-semibold">{t("checkout.title")}</h2>
                 </div>
@@ -220,7 +250,7 @@ export default function Checkout() {
                   </div>
                   <Link
                     to="/login?redirect=/checkout"
-                    className="mt-6 flex w-full items-center justify-center gap-2 border border-accent bg-primary py-3 text-sm font-semibold text-primary-foreground hover:opacity-90 transition-all active:scale-[0.98]"
+                    className="mt-6 flex w-full items-center justify-center gap-2 border border-accent bg-accent py-3 text-sm font-semibold text-white hover:opacity-90 transition-all active:scale-[0.98]"
                   >
                     {t("checkout.signIn")}
                   </Link>
@@ -243,7 +273,7 @@ export default function Checkout() {
           <form onSubmit={onSubmit} className="mt-10 grid gap-10 lg:grid-cols-3">
             <div className="lg:col-span-2">
               {user && (
-                <div className="mb-4 flex items-center justify-between rounded-2xl bg-card shadow-sm px-4 py-3 text-sm">
+                <div className="mb-4 flex items-center justify-between border border-border px-4 py-3 text-sm">
                   <span className="flex items-center gap-2 text-muted-foreground">
                     <User className="h-4 w-4" /> {t("checkout.signedInAs")}{" "}
                     <span className="font-medium text-foreground">{user.name}</span>
@@ -254,14 +284,14 @@ export default function Checkout() {
                 </div>
               )}
               {!user && guestCheckout && (
-                <div className="mb-4 flex items-center justify-between rounded-2xl bg-card shadow-sm px-4 py-3 text-sm">
+                <div className="mb-4 flex items-center justify-between border border-border px-4 py-3 text-sm">
                   <span className="text-muted-foreground">{t("checkout.guestAs")}</span>
                   <Link to="/login?redirect=/checkout" className="text-accent hover:underline">
                     {t("checkout.signInInstead")}
                   </Link>
                 </div>
               )}
-              <div className="overflow-hidden rounded-2xl bg-card shadow-sm">
+              <div className="border border-border">
                 <div className="px-6 py-4 border-b border-border">
                   <h2 className="text-base font-semibold">{t("checkout.yourDetails")}</h2>
                 </div>
@@ -277,7 +307,7 @@ export default function Checkout() {
                         placeholder="e.g. John"
                         value={form.first_name}
                         onChange={(e) => update("first_name", e.target.value)}
-                        className="h-10 w-full rounded-full border border-border bg-background px-3 text-sm text-foreground outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/25"
+                        className="h-10 w-full border border-border bg-background px-3 text-sm text-foreground outline-none transition-colors focus:border-accent"
                       />
                     </div>
                     <div className="space-y-1.5">
@@ -290,7 +320,19 @@ export default function Checkout() {
                         placeholder="e.g. Doe"
                         value={form.last_name}
                         onChange={(e) => update("last_name", e.target.value)}
-                        className="h-10 w-full rounded-full border border-border bg-background px-3 text-sm text-foreground outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/25"
+                        className="h-10 w-full border border-border bg-background px-3 text-sm text-foreground outline-none transition-colors focus:border-accent"
+                      />
+                    </div>
+                    <div className="space-y-1.5 sm:col-span-2">
+                      <label className="text-xs font-medium text-muted-foreground">Email</label>
+                      <input
+                        required
+                        maxLength={200}
+                        type="email"
+                        placeholder="you@example.com"
+                        value={form.email}
+                        onChange={(e) => update("email", e.target.value)}
+                        className="h-10 w-full border border-border bg-background px-3 text-sm text-foreground outline-none transition-colors focus:border-accent"
                       />
                     </div>
                     <div className="space-y-1.5 sm:col-span-2">
@@ -304,7 +346,7 @@ export default function Checkout() {
                         placeholder="e.g. +1 555-123-4567"
                         value={form.phone}
                         onChange={(e) => update("phone", e.target.value)}
-                        className="h-10 w-full rounded-full border border-border bg-background px-3 text-sm text-foreground outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/25"
+                        className="h-10 w-full border border-border bg-background px-3 text-sm text-foreground outline-none transition-colors focus:border-accent"
                       />
                     </div>
                     <div className="space-y-1.5 sm:col-span-2">
@@ -314,11 +356,11 @@ export default function Checkout() {
                       <textarea
                         required
                         maxLength={500}
-                        placeholder="Street, city, postal code…"
+                        placeholder="Street, city, postal codeâ€¦"
                         value={form.address}
                         onChange={(e) => update("address", e.target.value)}
                         rows={3}
-                        className="w-full rounded-2xl border border-border bg-background px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/25 resize-none"
+                        className="w-full border border-border bg-background px-3 py-2 text-sm text-foreground outline-none transition-colors focus:border-accent resize-none"
                       />
                     </div>
                   </div>
@@ -329,7 +371,7 @@ export default function Checkout() {
               </div>
             </div>
 
-            <aside className="h-fit overflow-hidden rounded-2xl bg-card shadow-sm">
+            <aside className="h-fit border border-border">
               <div className="px-6 py-4 border-b border-border">
                 <h2 className="text-base font-semibold">{t("checkout.yourOrder")}</h2>
               </div>
@@ -338,14 +380,14 @@ export default function Checkout() {
                 <button
                   type="submit"
                   disabled={placing}
-                  className="mt-5 w-full border border-accent bg-primary py-2.5 text-sm font-semibold text-primary-foreground hover:opacity-90 disabled:opacity-50 transition-all active:scale-[0.98]"
+                  className="mt-5 w-full border border-accent bg-accent py-2.5 text-sm font-semibold text-white hover:opacity-90 disabled:opacity-50 transition-all active:scale-[0.98]"
                 >
                   {placing ? t("checkout.placing") : t("checkout.place")}
                 </button>
                 <button
                   type="button"
                   onClick={orderViaWhatsApp}
-                  className="mt-2 flex w-full items-center justify-center gap-2 border border-accent bg-accent py-2.5 text-sm font-semibold text-accent-foreground hover:opacity-90 transition-all active:scale-[0.98]"
+                  className="mt-2 flex w-full items-center justify-center gap-2 border border-emerald-600 bg-emerald-600 py-2.5 text-sm font-semibold text-white hover:opacity-90 transition-all active:scale-[0.98]"
                 >
                   <MessageCircle className="h-4 w-4" /> {t("checkout.whatsapp")}
                 </button>
