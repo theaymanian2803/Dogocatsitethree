@@ -52,9 +52,11 @@ export function ReviewsSection() {
             <p className="mt-2 line-clamp-4 text-sm leading-relaxed text-muted-foreground">
               {r.body}
             </p>
-            <div className="mt-4 flex items-center justify-between gap-3 border-t border-border pt-3 text-xs text-muted-foreground">
+            <div className="mt-4 flex min-w-0 items-center justify-between gap-3 border-t border-border pt-3 text-xs text-muted-foreground">
               <span className="min-w-0 truncate font-semibold text-foreground">{r.user_name}</span>
-              {r.product_name && <span className="min-w-0 truncate">{r.product_name}</span>}
+              {r.product_name && (
+                <span className="min-w-0 truncate text-right">{r.product_name}</span>
+              )}
             </div>
           </article>
         ))}
